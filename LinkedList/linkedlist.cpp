@@ -31,8 +31,6 @@ public:
         Node* curr = head;
 
 
-        
-
         if(index < size && index >= 0){
 
             for (int i = 0; i < index; i++)
@@ -45,17 +43,15 @@ public:
         }
 
         return -1;
-
-
         
     }
     
     /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
     void addAtHead(int val) {
-        Node* node = new Node(val);
+        Node* curr = new Node(val);
 
-        node->next = head;
-        head = node;
+        curr->next = head;
+        head = curr;
 
         size++;
         
@@ -93,20 +89,21 @@ public:
         else if (index == size) addAtTail(val);
         else if(index < size && index > 0){
 
-            Node* curr = head;
+            Node* curr = new Node(val);
+            
+            Node* prev = head;
 
-            Node* node = new Node(val);
 
             for (int i = 0; i < index - 1; i++)
             {
-                curr = curr->next;
+                prev = prev->next;
             }
 
-            Node* temp = curr->next;
+            Node* next = prev->next;
 
-            node->next = temp;
+            curr->next = next;
 
-            curr->next = node;
+            prev->next = curr;
 
             size++;
 
