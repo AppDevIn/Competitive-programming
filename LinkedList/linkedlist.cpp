@@ -65,16 +65,16 @@ public:
             return;
         }
 
-        Node* curr = head;
+        Node* prev = head;
 
-        Node* node = new Node(val);
+        Node* curr = new Node(val);
 
-        while (curr->next)
+        while (prev->next)
         {
-            curr = curr->next;
+            prev = prev->next;
         }
 
-        curr->next = node;
+        prev->next = curr;
 
         size++;
         
