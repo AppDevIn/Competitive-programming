@@ -16,7 +16,10 @@ struct ListNode {
 
 void printNode(ListNode *node)
 {
-
+    if(!node){
+        cout << "Empty" << endl;
+        return;
+    }
     while (node->next)
     {
         cout << node->val << endl;
@@ -35,39 +38,33 @@ ListNode* deleteDuplicates(ListNode* head) {
     ListNode *curr = head;
     ListNode *temp = nullptr;
     
+    int duplicate = -101;
     int count = -1;
     while(curr){
-        
-        if(curr->next){
-            if(curr->val == curr->next->val){
-                if(!curr->next->next){
-                    head = nullptr;
-                }
-                else if(curr->next->val != curr->next->next->val){
-                    head = curr->next->next;
-                } else {
-                    head = curr->next;
-                }
+
+            if(curr->val == duplicate){
+            }
+            else if(curr->next && curr->val == curr->next->val){
+                duplicate = curr->val;
+    
+            } else if(curr->next && curr->next->next && curr->next->val == curr->next->next->val){
+                duplicate = curr->next->val;
+            }
+
+            if(curr->val == duplicate){
+                head = curr->next;
                 curr = head;
             }
-            else if(!curr->next->next){
-                break;
-            }
-            else if(curr->next->val == curr->next->next->val){
-                if(curr->next->next->next->val != curr->next->val){
-                    curr->next = curr->next->next->next;
-                } else {
-                    curr->next = curr->next->next;
-                }
-            } else{
+            else if(curr->next && curr->next->val == duplicate){
+                curr->next = curr->next->next;
+            } else {
                 curr = curr->next;
             }
-        } else {
-            break;
-        }
-
         
+
     }
+
+    
 
     return head;
 
@@ -82,7 +79,12 @@ int main(int argc, char const *argv[])
 
     // ListNode* node = new ListNode(1, new ListNode(2, new ListNode(3,  new ListNode(3, new ListNode(3, new ListNode(4, new ListNode(4, new ListNode(5))))))));
     // ListNode* node = new ListNode(1, new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3)))));
-    ListNode* node = new ListNode(1, new ListNode(2, new ListNode(3)));
+    // ListNode* node = new ListNode(1, new ListNode(2, new ListNode(3)));
+    // ListNode* node = new ListNode(1, new ListNode(2, new ListNode(3)));
+    // ListNode* node = new ListNode(1, new ListNode(1));
+    // ListNode* node = new ListNode(1);
+    // ListNode* node = new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(2))));
+    ListNode* node = new ListNode(0, new ListNode(1, new ListNode(2,  new ListNode(2, new ListNode(3, new ListNode(4))))));
 
     node = deleteDuplicates(node);
 
