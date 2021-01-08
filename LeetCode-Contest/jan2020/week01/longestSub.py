@@ -2,24 +2,22 @@ def lengthOfLongestSubstring(s: str) -> int:
     l =  [x for x in s]
     sl = list(set(l))
 
-    if len(sl) == 1:
+    if len(sl) == 1 or len(sl) == 0:
         return len(sl)
 
-    nL = [[]]
-    for x in range(0, len(l)):
-        curr = nL[len(nL)-1]
+    nL = []
+    curr = []
+    for x in range(0,len(l)-1):
+        nL.append(curr)
+        curr = []
+        for j in range(x,len(l)):
+            if l[j] not in curr:
+                curr.append(s[j])
+            else:
+                break
+        nL.append(curr)
         
-
-        if l[x] not in curr :
-            curr.append(l[x])
-        else:
-            nL[len(nL)-1] = curr
-            nL.append([l[x]])
-            if l[x-1] not in nL[len(nL)-1] :
-                nL[len(nL)-1].append(l[x-1])
-
-
-    return max([len(x) for x in nL ])
+    return max([len(x) for x in nL])            
 
 
     
@@ -31,8 +29,10 @@ def lengthOfLongestSubstring(s: str) -> int:
 
 
 
-print(lengthOfLongestSubstring(""))
-print(lengthOfLongestSubstring("dvdf"))
-print(lengthOfLongestSubstring("bbbbb"))
-print(lengthOfLongestSubstring("pwwkew"))
-print(lengthOfLongestSubstring("abcabcbb"))
+print(lengthOfLongestSubstring(""))#0
+print(lengthOfLongestSubstring("au"))#2
+print(lengthOfLongestSubstring("dvdf"))#3
+print(lengthOfLongestSubstring("bbbbb"))#1
+print(lengthOfLongestSubstring("pwwkew"))#3
+print(lengthOfLongestSubstring("abcabcbb")) #3
+print(lengthOfLongestSubstring("anviaj")) #5
