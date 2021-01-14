@@ -1,1 +1,1 @@
-# DSA and Competitve Programming
+# Competitve Programming
