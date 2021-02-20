@@ -20,9 +20,8 @@ def minRemoveToMakeValid(s):
             curr += 1
         elif(curr > fast):
             fast += 1
-        elif(s[fast] != ")"):
-            while(fast != len(s) and s[fast] != ")"):
-                fast += 1
+        elif(fast != len(s) and s[fast] != ")"):
+            fast += 1
 
     for i in range(len(s)):
         if((s[i] == "(" or s[i] == ")") and (i not in remove)):
