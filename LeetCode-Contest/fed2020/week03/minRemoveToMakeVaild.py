@@ -5,7 +5,7 @@ def minRemoveToMakeValid(s):
     """
     openBracket = []
     closeBracket = []
-
+    normal = []
     s = [c for c in s]
 
     for index in range(len(s)):
@@ -13,19 +13,19 @@ def minRemoveToMakeValid(s):
             openBracket.append(index)
         elif (s[index] == ")" and len(openBracket) > len(closeBracket)):
             closeBracket.append(index)
+        elif(s[index] != "(" and s[index] != ")"):
+            normal.append(index)
 
     minValue = min(len(openBracket), len(closeBracket))
 
-    remove = openBracket + closeBracket
-    for i in range(0, minValue):
-        remove.append(openBracket[i])
-        remove.append(closeBracket[i])
+    remove = openBracket[0:minValue] + closeBracket[0:minValue] + normal
 
+    newString = ""
     for i in range(len(s)):
-        if((s[i] == "(" or s[i] == ")") and (i not in remove)):
-            s[i] = ""
+        if(i in remove):
+            newString += s[i]
 
-    return "".join(s)
+    return newString
 
 
 print("🚀 ~ file: minRemoveToMakeVaild.py ~ line 21 ~ minRemoveToMakeValid('(a(b(c)d))",
