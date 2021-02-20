@@ -9,17 +9,19 @@ def minRemoveToMakeValid(s):
 
     s = [c for c in s]
     remove = []
-    while(fast < len(s)):
+    while(fast < (len(s)) and curr < len(s)):
 
-        if(s[curr] == "(" and s[fast] == ")"):
+        if(s[curr] == "(" and s[fast] == ")" and curr < fast):
             remove.append(curr)
             remove.append(fast)
             curr += 1
             fast += 1
         elif(s[curr] != "("):
             curr += 1
+        elif(curr > fast):
+            fast += 1
         elif(s[fast] != ")"):
-            while(s[fast] != ")"):
+            while(fast != len(s) and s[fast] != ")"):
                 fast += 1
 
     for i in range(len(s)):
@@ -30,4 +32,4 @@ def minRemoveToMakeValid(s):
 
 
 print("🚀 ~ file: minRemoveToMakeVaild.py ~ line 21 ~ minRemoveToMakeValid('(a(b(c)d)'')",
-      minRemoveToMakeValid("lee(t(co)de)"))
+      minRemoveToMakeValid("(a(b(c)d)"))
