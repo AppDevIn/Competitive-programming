@@ -12,7 +12,7 @@
 #             return True
 #     return False
     
-# Version 02
+# Version 02 Best Version
 # def searchMatrix(matrix, target):
 #     """
 #     :type matrix: List[List[int]]
@@ -61,7 +61,7 @@
 #     return False
 
 
-#Version 04
+# Version 04
 def searchMatrix(matrix, target):
     """
     :type matrix: List[List[int]]
@@ -69,8 +69,22 @@ def searchMatrix(matrix, target):
     :rtype: bool
     """
 
+    value = 0
+    for x in range(len(matrix[0])):
+        if matrix[0][x] <= target:
+            value = x
+        else: break
 
-    
+    newMatrix = []
+    for x in matrix:
+        if x[0] <= target:
+            newMatrix.append(x[0:value+1])
+        else: break
+    matrix = newMatrix
+    newMatrix = []
+
+    if matrix == []: return False
+
     row = 0
     col = len(matrix[0]) - 1
 
@@ -83,5 +97,4 @@ def searchMatrix(matrix, target):
             col -= 1
     return False
 
-
-searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 20)
+searchMatrix([[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], 5)
