@@ -1,5 +1,5 @@
 # 581. Shortest Unsorted Continuous Subarray
-# https://leetcode.com/problems/shortest-unsorted-continuous-subarray/solution/
+# https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
 class Solution(object):
 
     def findUnsortedSubarray(self, nums: [int]) -> int:
