@@ -1,7 +1,7 @@
 # 946. Validate Stack Sequences
 #https://leetcode.com/problems/validate-stack-sequences/
 class Solution:
-    def validateStackSequences(self, pushed: [int], popped: [int]) -> bool:
+    def validateStackSequences(self, pushed: [], popped: []) -> bool:
 
         push = []
         index = 0
