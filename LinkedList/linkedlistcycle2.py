@@ -13,4 +13,25 @@ class Solution:
             curr = curr.next
             
         return curr
+
+# What they are looking for
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        
+        try:
+            curr = head
+            fast = head.next
+            while(curr is not fast):
+                curr = curr.next
+                fast = fast.next.next
+        except:
+            return None
+        
+        curr = curr.next
+        while(head is not curr):
+            head = head.next
+            curr = curr.next
+            
+        return head
+            
             
