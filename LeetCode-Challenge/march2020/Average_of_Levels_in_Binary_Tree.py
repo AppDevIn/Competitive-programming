@@ -32,6 +32,7 @@ class Solution:
         
         
     def averageOfLevels(self, root: TreeNode):
+        self.dictory = {}
         self.recur(root, 0)
         
         results = []
