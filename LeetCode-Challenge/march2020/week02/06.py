@@ -1,3 +1,6 @@
+# 1721. Swapping Nodes in a Linked List
+# https://leetcode.com/problems/swapping-nodes-in-a-linked-list/
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -26,6 +29,24 @@ class Solution:
             temp = temp.next
         
         return head
+
+    def swapNodes(self, head: ListNode, k: int) -> ListNode:
+
+        
+
+        first = head
+        for _ in range(1, k):
+            first = first.next
+        fast= first
+
+        slow = head
+        while fast.next:
+            slow, fast = slow.next, fast.next
+        
+        slow.val, first.val = first.val, slow.val
+
+        return head
+
 
 
 def generateNode(arr=[1,2]) -> ListNode:
