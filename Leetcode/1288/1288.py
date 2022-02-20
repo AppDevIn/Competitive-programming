@@ -5,18 +5,17 @@ class Solution(object):
     def removeCoveredIntervals(self, intervals):
         """
         :type intervals: List[List[int]]
-        :rtype: int
+        :rtype: int`
         """
 
         intervals.sort(key=lambda x: (x[0], -x[1]))
-        n = len(intervals)
+        n = 0
         max = 0
 
         for interval in intervals:
             if interval[1] > max:
                 max = interval[1]
-            else:
-                n -= 1
+                n += 1
 
         return n
 
