@@ -1,27 +1,21 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-
-        if not list1 and not list2:
-            return list1
-        elif not list1:
-            return list2
-        elif not list2:
-            return list1
+        head = ListNode()
+        curr = head
         
-
-        answer = ListNode()
-        curr = answer
         while list1 and list2:
-            curr = curr.next if curr.next else curr
+            value = 0
             if list1.val > list2.val:
-                curr.val = list2.val
+                value = list2.val
                 list2 = list2.next 
             else:
-                curr.val = list1.val
-                list1 = list1.next 
-            curr.next = ListNode()
-            
-        curr.next = list2 if list2 else list1
-        return answer
-            
+                value = list1.val
+                list1 = list1.next
+                
+            curr.next = ListNode(value)
+            curr = curr.next
+
+        if list2 or list1:
+            curr.next = list2 if list2 else list1
+        return head.next
 
