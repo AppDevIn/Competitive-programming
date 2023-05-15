@@ -1,22 +1,19 @@
-# Definition for a binary tree node.
+Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
-
-
+        
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        return self.rcur(root) if root is not None else []
-
-    def rcur(self, node: TreeNode):
         lst = []
-        if node.left:
-            lst += self.rcur(node.left)
-        if node.right:
-            lst += self.rcur(node.right)
-        if node.val != None:
-            lst.append(node.val)
-
+        self.rcur(root, lst)
         return lst
+        
+        
+    def rcur(self, root: Optional[TreeNode], lst) -> List[int]:
+        if not root: return 
+        self.rcur(root.left, lst)
+        self.rcur(root.right, lst)
+        lst.append(root.val)
